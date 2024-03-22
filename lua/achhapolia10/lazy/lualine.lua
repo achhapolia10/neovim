@@ -26,10 +26,13 @@ return
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'searchcount',{'datetime', style="%d/%m %H:%M"} },
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = {
+          'searchcount'
+          --   , { 'datetime', style = "%d/%m %H:%M" }
+        },
         lualine_y = { 'encoding', 'fileformat', 'filetype' },
-        lualine_z = { 'location' }
+        lualine_z = { 'location', 'progress' }
       },
       inactive_sections = {
         lualine_a = {},

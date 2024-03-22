@@ -2,7 +2,6 @@ require("achhapolia10.remaps")
 require("achhapolia10.set")
 require("achhapolia10.lazy_init")
 
-
 local augroup = vim.api.nvim_create_augroup
 local achhapolia10Group = augroup('achhapolia10', {})
 
@@ -35,6 +34,33 @@ autocmd({ "BufWritePre" }, {
   pattern = "*",
   command = [[%s/\s\+$//e]],
 })
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+
+autocmd('BufEnter', {
+  group = achhapolia10Group,
+  callback = function(client, bufnr)
+    local ft = vim.bo.filetype
+    if (ft == 'php') then
+      vim.opt.tabstop = 4
+      vim.opt.softtabstop = 4
+      vim.opt.shiftwidth = 4
+    else
+      vim.opt.tabstop = 2
+      vim.opt.softtabstop = 2
+      vim.opt.shiftwidth = 2
+    end
+  end
+})
+
 
 autocmd('LspAttach', {
   group = achhapolia10Group,

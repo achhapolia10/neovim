@@ -27,7 +27,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+--vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 --vim.keymap.set("n", "<C-K>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-J>", "<cmd>cprev<CR>zz")
@@ -45,7 +45,11 @@ vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>");
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>");
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]]);
 
+vim.keymap.set('n', '<leader>qt', ":bd<CR>");
+vim.keymap.set('n', '<leader>qo', ":%bd|e#|bd#<CR>");
+vim.keymap.set('n', '<leader>qa', ":%bd|Ex|bd#<CR>");
+
 
 vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+  vim.cmd("w")
 end)

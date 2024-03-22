@@ -1,1 +1,1 @@
-require('achhapolia10')
+require('achhapolia10');
