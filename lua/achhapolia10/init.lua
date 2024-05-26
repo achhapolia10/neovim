@@ -49,7 +49,10 @@ autocmd('BufEnter', {
   group = achhapolia10Group,
   callback = function(client, bufnr)
     local ft = vim.bo.filetype
-    if (ft == 'php') then
+    if (
+          ft == 'php' or
+          ft == 'rust'
+        ) then
       vim.opt.tabstop = 4
       vim.opt.softtabstop = 4
       vim.opt.shiftwidth = 4
@@ -67,7 +70,6 @@ autocmd('LspAttach', {
   callback = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
@@ -89,6 +91,7 @@ autocmd('LspAttach', {
       vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
     end, '[C]ode [A]ction')
 
+    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
     nmap('<leader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')

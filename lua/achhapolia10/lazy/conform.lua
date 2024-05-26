@@ -18,8 +18,11 @@ return { -- Autoformat
       scss = { { "prettierd", "prettier" } },
       javascriptreact = { { "prettierd", "prettier" } },
       typescript = { { "prettierd", "prettier" } },
+      html = { { "prettierd", "prettier" } },
       typescriptreact = { { "prettierd", "prettier" } },
       php = { { "pretty-php" } },
+      go = { "goimports", "gofumpt" },
+      xml = { "xmlformat" }
     },
   },
 }
